@@ -17,6 +17,17 @@ __This software implementation is provided for academic research and non-commerc
   - Make sure to compile pycaffe, the python interface
 3. Enter **root_folder/ExcitationBP**, run **demo.ipynb** using the python notebook. It will automatically download the pre-trained GoogleNet model for COCO and show you how to compute the contrastive attention map. For details for running the python notebook remotely on a server, see [here](https://coderwall.com/p/ohk6cg/remote-access-to-ipython-notebooks-via-ssh).
 
+## Anaconda Quick Start
+```
+$ conda env create -f env_caffe.yml
+$ conda activate caffe
+$ pip install scipy==1.2.3 && pip install scikit-image==0.11.3
+$ conda install ipykernel
+$ rm -rf build && mkdir build && cd build
+$ cmake -DBLAS=open ..
+$ make -j$(nproc)
+```
+
 ## Other comments
 1. We also implemented the gradient based method and the deconv method compared in our paper. See **demo.ipynb**.
 2. We implemented both GPU and CPU version of Excitation Backprop. Change `caffe.set_mode_eb_gpu()` to `caffe.set_mode_eb_cpu()` to run the CPU version.
